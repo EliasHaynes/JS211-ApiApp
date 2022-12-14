@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+    <article>
+        <input id="searchCity" type="text" placeholder="city,state">
+        <button id="button" onclick="returnData()">Submit</button>
+        <br>
+Units:<select name="units" id="unit">
+            <option value="Fahrenheit">Fahrenheit</option>
+            <option value="Celsius">Celsius</option>
+            <option value="Kelvin">Kelvin</option>
+        </select>
+        <button id="unitBtn">Submit</button>
+    </article>
+    <p id="display"></p>
+    <div>
+        <!-- <button id="grabApi" onclick="returnData()">Display</button> -->
+    </div>
+    <div id="weather-container">
+        <img id="icon">
+        <p id="weather-temp"></p>
+        <p id="weather-condition"></p>
+    </div>
+</body>
+</html>
