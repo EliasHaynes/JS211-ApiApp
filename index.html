@@ -6,27 +6,33 @@
     <title>Document</title>
 </head>
 <body>
+    
     <script src="api.js"></script>
     <script src="main.js"></script>
-    <article>
+    <!-- Current Weather -->
+    <article id="weather-api">
         <input id="searchCity" type="text" placeholder="city,state">
-        <button id="button" onclick="returnData()">Submit</button>
-        <br>
-Units:<select name="units" id="unit">
-            <option value="Fahrenheit">Fahrenheit</option>
-            <option value="Celsius">Celsius</option>
-            <option value="Kelvin">Kelvin</option>
-        </select>
-        <button id="unitBtn">Submit</button>
+        <button id="button" onclick="returnWeather()">Submit</button>
+        <p id="display"></p>
+        <div id="weather-container">
+            <h1 id="name"></h1>
+            <p id="weather-condition"></p>
+            <img id="icon">
+            <p id="weather-temp"></p>
+        </div>
     </article>
-    <p id="display"></p>
-    <div>
-        <!-- <button id="grabApi" onclick="returnData()">Display</button> -->
+        <!-- Forecasted Weather -->
+    <div id="forecast-api">
+        <input type="text" id="forecast-api" placeholder="Zip Code">
+        <button id="forecast" onclick ='returnForecast()'>Forecast</button>
+        <p id="forecast-condition"></p>
+        <img id="forecast-icon">
+        <p id="forecast-temp"></p>
     </div>
-    <div id="weather-container">
-        <img id="icon">
-        <p id="weather-temp"></p>
-        <p id="weather-condition"></p>
+    <br>
+    <!-- Weather Map -->
+    <div id="weather-map">
+        <button id="map">Show Map</button>
     </div>
 </body>
 </html>
