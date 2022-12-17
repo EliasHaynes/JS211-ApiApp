@@ -45,39 +45,52 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?zip=' +city+'&units=impe
     .then(data => {
         arrayOfForecast = data;
         console.log('forecast:', arrayOfForecast);
-
-        //grab each date property from the data
-        let arrayOfForecastDates = arrayOfForecast.list.map((obj,i) => obj = arrayOfForecast.list[i].dt_txt)
-        console.log('Dates:', arrayOfForecastDates)
-
-        //Forecasted Weather Condition
-        let grabFcWeatherConditon = arrayOfForecast.list[0].weather[0].main;
-        let displayFcCondition = document.getElementById('forecast-condition');
-        displayFcCondition.innerHTML = grabFcWeatherConditon;
-        console.log('Forecasted Weather Condition:', grabFcWeatherConditon);
-
-        //Forecasted Weather Temp
-        let grabFcWeatherTemp = Math.floor(arrayOfForecast.list[0].main.temp);
-        let displayFcTemp = document.getElementById('forecast-temp');
-        displayFcTemp.innerHTML = grabFcWeatherTemp;
-        console.log('Forecasted Weather Temp', grabFcWeatherTemp);
-
-        //Forecasted Icons
-        // console.log('ICONS!!', arrayOfForecast.list[0].weather[0].icon)
-        const fcImgSrc = document.getElementById('forecast-icon');
-        const fcIconNum = arrayOfForecast.list.map((obj,i) => obj = arrayOfForecast.list[i].weather[0].icon)
-        console.log('ICONS!', fcIconNum);
-        
-        fcImgSrc.src = 'http://openweathermap.org/img/wn/' + fcIconNum + '.png';
-        
-
-
-
-
-
-
     })
+    .then(function displayForecast() {
+    arrayOfForecast.list.map((user,i) => {   
+    //Ul that will contain each li(forecast timestamp)
+        const fcParentUl = document.getElementById('forecast-list');
+    //Creating li and setting its id to each individual forecast time stamp
+        const fcId = user.weather[0].id
+        const fcli = document.createElement('li');
+            fcli.setAttribute('id', fcId)
+    //Creating img and grabbing the icon from data
+        const fcimg = document.createElement('img')
+            fcimg.src = 'http://openweathermap.org/img/wn/' + user.weather[0].icon + '.png';
+    //HTML break element
+        // const br = document.createElement('br')
+        
+
+        // li = document.createElement
+        let grabFcWeatherConditon = user.weather[0].main;
+            console.log('grabFcWeatherConditon:',grabFcWeatherConditon)
+        //Forecasted Weather Temp
+            let grabFcWeatherTemp = Math.floor(user.main.temp);
+            console.log('grabFcWeatherTemp:',grabFcWeatherTemp)
+        //Grab each date property from the data
+            let grabFcDateofForecast = user.dt_txt
+            console.log('grabFcDateofForecast:', grabFcDateofForecast)
+        //The content
+            let fcContent = `${grabFcDateofForecast}: 
+            Weather condition:  ${grabFcWeatherConditon} 
+            Temp:${grabFcWeatherTemp}`
+        // 
+        // arrayOfForecast.list.map((user,i) => {
+        // //Grabbing each individual forecast time stamp by the id we assigned each li from the data
+        //     const currentLi = document.getElementById(fcId)
+        //     currentLi.appendChild(fcParentUl)
+        // })
+        fcli.innerHTML = fcContent
+        fcParentUl.appendChild(fcli);
+        fcParentUl.appendChild(fcimg)
+        })
+    })
+
+
+
+
 }
+
 
 const returnMap = () => {
 fetch()
@@ -103,4 +116,3 @@ fetch()
 // Whats the difference between localstorage and sessionstorage
 // How to hide api key in frontend applications
 //Fetch and GET are the same? Are we messing with JQuery in this course?
-
