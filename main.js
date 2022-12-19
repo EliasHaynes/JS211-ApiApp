@@ -11,7 +11,7 @@ const getCity = () => {
 
 const returnWeather = () => {
     getCity()
-fetch('https://api.openweathermap.org/data/2.5/weather?q=' +city+'&units=imperial&APPID=' + APPID)
+fetch('https://api.openweathermap.org/data/2.5/weather?zip=' +city+'&units=imperial&APPID=' + APPID)
  .then(res => res.json())
  .then(data => {
     arrayOfWeather = data;
@@ -63,13 +63,13 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?zip=' +city+'&units=impe
 
         // li = document.createElement
         let grabFcWeatherConditon = user.weather[0].main;
-            console.log('grabFcWeatherConditon:',grabFcWeatherConditon)
+            // console.log('grabFcWeatherConditon:',grabFcWeatherConditon)
         //Forecasted Weather Temp
             let grabFcWeatherTemp = Math.floor(user.main.temp);
-            console.log('grabFcWeatherTemp:',grabFcWeatherTemp)
+            // console.log('grabFcWeatherTemp:',grabFcWeatherTemp)
         //Grab each date property from the data
             let grabFcDateofForecast = user.dt_txt
-            console.log('grabFcDateofForecast:', grabFcDateofForecast)
+            // console.log('grabFcDateofForecast:', grabFcDateofForecast)
         //The content
             let fcContent = `${grabFcDateofForecast}: 
             Weather condition:  ${grabFcWeatherConditon} 
